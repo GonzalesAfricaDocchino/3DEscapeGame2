@@ -29,8 +29,6 @@ public class SingletonMonoBehaviour<T> : MonoBehaviour where T : MonoBehaviour
 			Destroy(gameObject);
 			return;
 		}
-
-		DontDestroyOnLoad(gameObject);
 	}
 
 }

@@ -17,7 +17,6 @@ public class FadeCanvas : MonoBehaviour
 	//最初の処理
 	void Start()
 	{
-		DontDestroyOnLoad(gameObject);
 
 		panelImage = GetComponentInChildren<Image>();
 

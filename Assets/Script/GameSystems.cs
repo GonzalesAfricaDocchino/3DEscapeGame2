@@ -15,16 +15,6 @@ public class GameSystems : MonoBehaviour
     private bool openDoor = false;
     int buttonClickCount = 0;
 
-    void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-
-        if (playerCamera == null)
-        {
-            Debug.LogError("カメラがnullです。");
-        }
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -63,8 +53,6 @@ public class GameSystems : MonoBehaviour
                         openDoor = true;
                         Debug.Log("ドアが開きました！");
                         SceneManager.LoadScene("Clear");
-
-                        DontDestroyOnLoad(gameObject);
 
                         if (playerCamera == null)
                         {
