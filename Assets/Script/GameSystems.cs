@@ -7,21 +7,19 @@ public class GameSystems : MonoBehaviour
 {
     public Camera playerCamera;
     public LayerMask interactableLayer;
+    public GameObject keyPrefab;
+    public Transform spawnPoint;
+
     private GameObject currentTarget;
     private bool hasKey = false;
     private bool openDoor = false;
-    public GameObject keyPrefab;
-    public Transform spawnPoint;
+    int buttonClickCount = 0;
 
     void Start()
     {
         DontDestroyOnLoad(gameObject);
-        if (playerCamera != null)
-        {
-            Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-            // 以下の処理を行う
-        }
-        else
+
+        if (playerCamera == null)
         {
             Debug.LogError("カメラがnullです。");
         }
@@ -41,15 +39,21 @@ public class GameSystems : MonoBehaviour
             {
                 currentTarget = hit.collider.gameObject;
 
-                if (currentTarget.CompareTag("Button"))
+                if (currentTarget.CompareTag("Button") && !hasKey)
                 {
-                    GameObject key = Instantiate(keyPrefab, spawnPoint.position, Quaternion.identity);
+                    buttonClickCount++;
+                    if(buttonClickCount == 1)
+                    {
+                        GameObject key = Instantiate(keyPrefab, spawnPoint.position, Quaternion.identity);
+                        key.transform.rotation = Quaternion.Euler(90f, 90f, 0f);
+                    }
                 }
 
                 if (currentTarget.CompareTag("Key"))
                 {
                     Destroy(currentTarget);
                     hasKey = true;
+                    Debug.Log("カギを獲得しました！");
                 }
 
                 if (currentTarget.CompareTag("Door"))
@@ -59,6 +63,13 @@ public class GameSystems : MonoBehaviour
                         openDoor = true;
                         Debug.Log("ドアが開きました！");
                         SceneManager.LoadScene("Clear");
+
+                        DontDestroyOnLoad(gameObject);
+
+                        if (playerCamera == null)
+                        {
+                            Debug.LogError("カメラがnullです。");
+                        }
                     }
                     else if (!hasKey)
                     {
