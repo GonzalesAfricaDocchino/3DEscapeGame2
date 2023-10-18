@@ -1,13 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+[Serializable]
+public class Item
 {
     public enum Type
     {
-        key,
+        Key,
     }
 
     public Type type;
+    public Sprite sprite;
 }

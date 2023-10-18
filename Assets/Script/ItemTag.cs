@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ItemTag : MonoBehaviour
 {
-    //ƒAƒCƒeƒ€‚Ìí—Ş‚ğİ’è
-    [SerializeField] Item.Type type;
+    [SerializeField] Item item;
 
     public void OnClickObj()
     {
-        InventoryItem.instance.SetItem();
+        InventoryItem.instance.SetItem(item);
     }
 }

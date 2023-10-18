@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,41 +6,20 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public List<InventoryItem> inventory = new List<InventoryItem>();
-    public Transform inventoryUI;
-    public GameObject inventorySlotPrefab;
+    Image image;
 
-    private void Start()
+    private void Awake()
     {
-        UpdateInventoryUI();
+        image = GetComponent<Image>();
     }
 
-    //新しいアイテムをインベントリに追加
-    public void AddItem(InventoryItem item)
+    public void SetItem(Item item)
     {
-        inventory.Add(item);
-        UpdateInventoryUI();
+        UpdateImage(item);
     }
 
-    //既存のアイテムスロットをクリアし、UI要素を再生成
-    private void UpdateInventoryUI()
+    void UpdateImage(Item item)
     {
-        //アイテムスロットクリア
-        foreach (Transform child in inventoryUI)
-        {
-            Destroy(child.gameObject);
-        }
-
-        //インベントリ内アイテムをUIに表示
-        foreach (var item in inventory)
-        {
-            GameObject slot = Instantiate(inventorySlotPrefab, inventoryUI);
-            Image itemImage = slot.transform.Find("ItemImage").GetComponent<Image>();
-            Text itemNameText = slot.transform.Find("ItemName").GetComponent<Text>();
-
-            //アイコン、名前をUIに設定
-            //itemImage.sprite = item.icon;
-            //itemNameText.text = item.itemName;
-        }
+        image.sprite = item.sprite;
     }
 }

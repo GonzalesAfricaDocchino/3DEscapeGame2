@@ -20,9 +20,9 @@ public class GameSystems : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Ray‚ğƒvƒŒƒCƒ„[‚©‚ç‚Ü‚Á‚·‚®L‚Î‚·
+            //Rayã‚’ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã‹ã‚‰ã¾ã£ã™ãä¼¸ã°ã™
             Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
-            //Õ“Ë‚µ‚½ƒIƒuƒWƒFƒNƒg‚âî•ñ‚ğŠi”[‚·‚é
+            //è¡çªã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚„æƒ…å ±ã‚’æ ¼ç´ã™ã‚‹
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, interactableLayer))
@@ -43,7 +43,7 @@ public class GameSystems : MonoBehaviour
                 {
                     Destroy(currentTarget);
                     hasKey = true;
-                    Debug.Log("ƒJƒM‚ğŠl“¾‚µ‚Ü‚µ‚½I");
+                    Debug.Log("ã‚«ã‚®ã‚’ç²å¾—ã—ã¾ã—ãŸï¼");
                 }
 
                 if (currentTarget.CompareTag("Door"))
@@ -51,17 +51,17 @@ public class GameSystems : MonoBehaviour
                     if (hasKey && !openDoor)
                     {
                         openDoor = true;
-                        Debug.Log("ƒhƒA‚ªŠJ‚«‚Ü‚µ‚½I");
+                        Debug.Log("ãƒ‰ã‚¢ãŒé–‹ãã¾ã—ãŸï¼");
                         SceneManager.LoadScene("Clear");
 
                         if (playerCamera == null)
                         {
-                            Debug.LogError("ƒJƒƒ‰‚ªnull‚Å‚·B");
+                            Debug.LogError("ã‚«ãƒ¡ãƒ©ãŒnullã§ã™ã€‚");
                         }
                     }
                     else if (!hasKey)
                     {
-                        Debug.Log("Œ®‚ª•K—v‚Å‚·I");
+                        Debug.Log("éµãŒå¿…è¦ã§ã™ï¼");
                     }
                 }
             }
