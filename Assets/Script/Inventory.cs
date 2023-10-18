@@ -38,8 +38,8 @@ public class Inventory : MonoBehaviour
             Text itemNameText = slot.transform.Find("ItemName").GetComponent<Text>();
 
             //アイコン、名前をUIに設定
-            itemImage.sprite = item.icon;
-            itemNameText.text = item.itemName;
+            //itemImage.sprite = item.icon;
+            //itemNameText.text = item.itemName;
         }
     }
 }

@@ -2,10 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
 public class InventoryItem
 {
-    // 表示するアイテムの詳細
-    public string itemName;
-    public Sprite icon;
+    public static InventoryItem instance;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+    }
+
+    public void SetItem()
+    {
+        Debug.Log("アイテムを格納したよ");
+    }
 }
