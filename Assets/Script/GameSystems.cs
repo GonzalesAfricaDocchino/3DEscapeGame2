@@ -15,6 +15,8 @@ public class GameSystems : MonoBehaviour
     private bool openDoor = false;
     int buttonClickCount = 0;
 
+    [SerializeField] Item item;
+
     // Update is called once per frame
     void Update()
     {
@@ -41,6 +43,7 @@ public class GameSystems : MonoBehaviour
 
                 if (currentTarget.CompareTag("Key"))
                 {
+                    InventoryItem.instance.SetItem(item);
                     Destroy(currentTarget);
                     hasKey = true;
                     Debug.Log("カギを獲得しました！");
