@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
-    [SerializeField] Texture2D defaultCursor = null;
-    [SerializeField] Texture2D interactCursor = null;
+    [SerializeField] Texture2D defaultCursor;
+    [SerializeField] Texture2D interactCursor;
 
     Camera mainCamera;
     RaycastHit hit;
-    GameObject targetObject;
 
     void Start()
     {
@@ -23,7 +20,6 @@ public class CursorManager : MonoBehaviour
         // マウスが左クリックされたら
         if (Input.GetMouseButtonDown(0))
         {
-            //LookUpTargetObject();
             return;
         }
         CastRay();
@@ -41,33 +37,13 @@ public class CursorManager : MonoBehaviour
 
         if(Physics.Raycast(ray.origin, ray.direction, out hit, Mathf.Infinity))
         {
-            targetObject = hit.collider.gameObject;
-
             SetCursor(false);
         }
         else
         {
-            targetObject = null;
-
             SetCursor(true);
         }
     }
-
-    // 対象のオブジェクトを調べる
-    /*void LookUpTargetObject()
-    {
-        if (targetObject == null)
-        {
-            return;
-        }
-
-        SetCursor(true);
-
-        targetObject.GetComponent<InteractableObject>().LookUp();
-
-        // 無効にする（調べている最中に別のオブジェクトを調べることができないようにする）
-        enabled = false;
-    }*/
 
     public void SetCursor(bool isDefault)
     {

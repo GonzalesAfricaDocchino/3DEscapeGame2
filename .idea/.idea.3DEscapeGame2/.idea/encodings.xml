@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/Assets/Script/CameraController.cs" charset="windows-31j" />
     <file url="file://$PROJECT_DIR$/Assets/Script/ClickObject.cs" charset="windows-31j" />
+    <file url="file://$PROJECT_DIR$/Assets/Script/CursorManager.cs" charset="windows-31j" />
     <file url="file://$PROJECT_DIR$/Assets/Script/Inventory.cs" charset="windows-31j" />
     <file url="file://$PROJECT_DIR$/Assets/Script/InventoryItem.cs" charset="windows-31j" />
   </component>

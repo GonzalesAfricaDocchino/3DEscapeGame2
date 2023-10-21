@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class ClickObject : MonoBehaviour
 {
-    public GameObject mainCamera;
+    /*public GameObject mainCamera;
     public EventSystem eventsystem;
 
     public Ray ray;
@@ -87,5 +87,5 @@ public class ClickObject : MonoBehaviour
                     break;
             }
         }
-    }
+    }*/
 }
