@@ -9,6 +9,8 @@ public class GameSystems : MonoBehaviour
     public LayerMask interactableLayer;
     public GameObject keyPrefab;
     public Transform spawnPoint;
+    public AudioClip doorClose;
+    public AudioClip GetKey;
 
     private GameObject currentTarget;
     private bool hasKey = false;
@@ -43,6 +45,7 @@ public class GameSystems : MonoBehaviour
 
                 if (currentTarget.CompareTag("Key"))
                 {
+                    AudioSource.PlayClipAtPoint(GetKey, transform.position);
                     InventoryItem.instance.SetItem(item);
                     Destroy(currentTarget);
                     hasKey = true;
@@ -56,14 +59,10 @@ public class GameSystems : MonoBehaviour
                         openDoor = true;
                         Debug.Log("ドアが開きました！");
                         SceneManager.LoadScene("Clear");
-
-                        if (playerCamera == null)
-                        {
-                            Debug.LogError("カメラがnullです。");
-                        }
                     }
                     else if (!hasKey)
                     {
+                        AudioSource.PlayClipAtPoint(doorClose, transform.position);
                         Debug.Log("鍵が必要です！");
                     }
                 }
